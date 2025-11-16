@@ -1,0 +1,46 @@
+
+<h2 class="mb-3">{{ titulo }}</h2>
+
+<form class="row g-2 mb-3"
+      (submit)="agregarProducto(nombre, descripcion, precio); $event.preventDefault()">
+
+  <div class="col-md-3">
+    <input #nombre
+           type="text"
+           class="form-control"
+           placeholder="Nombre del producto">
+  </div>
+
+  <div class="col-md-4">
+    <input #descripcion
+           type="text"
+           class="form-control"
+           placeholder="Descripción">
+  </div>
+
+  <div class="col-md-2">
+    <input #precio
+           type="number"
+           class="form-control"
+           placeholder="Precio">
+  </div>
+
+  <div class="col-md-2 d-grid">
+    <button type="submit" class="btn btn-primary">
+      Agregar
+    </button>
+  </div>
+</form>
+
+<ul class="list-group">
+  <li class="list-group-item d-flex justify-content-between align-items-start"
+      *ngFor="let p of productos">
+    <div>
+      <div class="fw-bold">{{ p.nombre }}</div>
+      <small class="text-muted">{{ p.descripcion }}</small>
+    </div>
+    <span class="badge bg-success rounded-pill">
+      $ {{ p.precio }}
+    </span>
+  </li>
+</ul>
